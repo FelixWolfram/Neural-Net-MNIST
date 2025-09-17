@@ -15,5 +15,6 @@ react_classification/
 # other folders
 images/
 egg_xor/
+mnist_neural_net/data/
 
 main.py
