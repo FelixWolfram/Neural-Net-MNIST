@@ -8,3 +8,12 @@ wheels/
 
 # Virtual environments
 .venv
+
+# the react_classification folder with the react project
+react_classification/
+
+# other folders
+images/
+egg_xor/
+
+main.py
