@@ -176,29 +176,42 @@ const Canvas = () => {
 
   return (
     <div className="canvas-container">
-      <canvas
-        ref={canvasRef}
-        className="canvas"
-        width={GRID_SIZE * GRID_SCALE}
-        height={GRID_SIZE * GRID_SCALE}
-        onMouseDown={() => setMouseDown(true)}
-        onMouseUp={() => setMouseDown(false)}
-        onMouseMove={handleMouseMove}
-        style={{ border: "2px solid #282828ff", cursor: "crosshair" }}
-      />
+      <div className="main-content">
+        <div className="canvas-side">
+          <canvas
+            ref={canvasRef}
+            className="canvas"
+            width={GRID_SIZE * GRID_SCALE}
+            height={GRID_SIZE * GRID_SCALE}
+            onMouseDown={() => setMouseDown(true)}
+            onMouseUp={() => setMouseDown(false)}
+            onMouseMove={handleMouseMove}
+          />
+          <button className="clear-canvas-button" onClick={clearCanvas}>
+            Clear Canvas
+          </button>
+        </div>
 
-      <div className="controls">
-        <button className="clear-canvas-button" onClick={clearCanvas}>
-          Clear Canvas
-        </button>
-      </div>
-
-      <div className="prediction">
-        {prediction && (
-          <div>
-            <h2>Prediction: {prediction.class}</h2>
-          </div>
-        )}
+        <div className="bars-side">
+          {prediction && !prediction.error ? (
+            prediction.probabilities.map((prob, i) => (
+              <div className="bar-row" key={i}>
+                <span className={`bar-label ${i === prediction.class ? "bar-label-active" : ""}`}>{i}</span>
+                <div className="bar-track">
+                  <div
+                    className={`bar-fill ${i === prediction.class ? "bar-fill-active" : ""}`}
+                    style={{ width: `${(prob * 100).toFixed(1)}%` }}
+                  />
+                </div>
+                <span className={`bar-value ${i === prediction.class ? "bar-label-active" : ""}`}>
+                  {(prob * 100).toFixed(1)}%
+                </span>
+              </div>
+            ))
+          ) : (
+            <div className="bars-placeholder">Draw a digit to classify</div>
+          )}
+        </div>
       </div>
     </div>
   );

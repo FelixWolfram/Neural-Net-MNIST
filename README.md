@@ -25,7 +25,7 @@ A neural network for handwritten digit recognition, built from scratch with NumP
 
 ### Requirements
 
-- Python 3.8+
+- Python 3.13+
 - [uv](https://docs.astral.sh/uv/) (dependency management)
 - Node.js (for the inference app)
 
@@ -53,9 +53,7 @@ A neural network for handwritten digit recognition, built from scratch with NumP
 1. Start the Flask backend:
 
    ```bash
-   cd mnist_NN_react_app
-   pip install flask flask-cors numpy
-   python classify_num_server.py
+   uv run python mnist_NN_react_app/classify_num_server.py
    ```
 
 2. Start the React frontend (in a separate terminal):

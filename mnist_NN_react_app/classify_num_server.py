@@ -65,7 +65,6 @@ def classify():
     
     try:
         data = request.json
-        print("data:", data)
         pixels = np.array(data['pixels'], dtype=np.float32).reshape(1, -1)  # Reshape für dein Modell
         print(f"Pixels shape: {pixels.shape}")
         
@@ -74,9 +73,6 @@ def classify():
             pixels = pixels / 255.0
 
         w, b = load_model()
-
-        print("Model weights and biases loaded.")
-        print(w, b)
 
         # Feed Forward durch dein Netzwerk
         activations = feed_forward_neural_network(pixels, w, b)
@@ -110,5 +106,5 @@ def health():
 
 if __name__ == '__main__':
     print("Starting Python Classification Server...")
-    print("Server will run on http://localhost:5000")
+    print("Server will run on http://localhost:5001")
     app.run(debug=True, port=5001, host='0.0.0.0')
