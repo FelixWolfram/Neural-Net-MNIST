@@ -9,12 +9,12 @@ wheels/
 # Virtual environments
 .venv
 
-# the react_classification folder with the react project
-react_classification/
+# OS files
+.DS_Store
 
 # other folders
 images/
 egg_xor/
-mnist_neural_net/data
+mnist_neural_net/data/
 
 main.py
